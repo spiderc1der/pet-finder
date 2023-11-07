@@ -1,12 +1,14 @@
-<p style="color:#28313F;text-align:center;" id="result"> dasdasdsadsad</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
+<script src="database.js"></script>
 
-<form onsubmit="myFunction()">
-    Enter name: <input type="text" name="fname">
-    <input type="submit" value="Submit">
-</form>
+<body>
+
+    
+<div><form name:="addressForm" onsubmit="handleRequest(); return false">
+    enter pet image address: <input type="text" name="petForm" id = "petLink"> 
+    <input type="submit" value="submit">
+</form></div>
   
-<script>
-  function myFunction() {
-    alert("The form was submitted");
-  }
-</script>
+<p style="color:#28313F;text-align:center;" id="result"></p>
+
+</body>

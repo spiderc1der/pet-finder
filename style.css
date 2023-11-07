@@ -1,0 +1,13 @@
+body {
+    background-color: #e8f4b4;
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+  }
+  
+form {
+      width: 250px;
+      margin: 0 auto;
+}
+
+div{
+    text-align: center;
+}
