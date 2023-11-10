@@ -3,11 +3,14 @@ body {
     font-family: Verdana, Helvetica, Arial, sans-serif;
   }
   
-form {
-      width: 250px;
-      margin: 0 auto;
+.form-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
-div{
-    text-align: center;
+form {
+  width: 50%;
+  margin: 0 auto;
 }
+

@@ -2,12 +2,21 @@
 <script src="database.js"></script>
 
 <body>
-
+    <h1 style="color:#800000;text-align:center;">Chicken Smoothie
+        Pet Finder</h1>
+        
+        <p style="color:#28313F;text-align:center;">this is an unofficial tool for the virtual pet game, Chicken Smoothie, designed to help users identify the pets adopted from the Dec 18th boxes!
+            simply copy and paste the image address of your pet 
+            (without dress-up items!) into the box below and click/press enter.
+        </p>
+        
     
-<div><form name:="addressForm" onsubmit="handleRequest(); return false">
-    enter pet image address: <input type="text" name="petForm" id = "petLink"> 
-    <input type="submit" value="submit">
-</form></div>
+<div class="form-container">
+    <form name:="addressForm" onsubmit="handleRequest(); return false">
+        enter pet image address: <input type="text" name="petForm" id = "petLink"> 
+        <input type="submit" value="submit">
+    </form>
+</div>
   
 <p style="color:#28313F;text-align:center;" id="result"></p>
 
