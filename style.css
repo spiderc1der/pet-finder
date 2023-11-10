@@ -1,16 +1,29 @@
 body {
-    background-color: #e8f4b4;
-    font-family: Verdana, Helvetica, Arial, sans-serif;
-  }
+  background-color: #94c17a;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+}
   
-.form-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+h1{
+  color:#800000;
+  text-align:center;
 }
 
-form {
-  width: 50%;
-  margin: 0 auto;
+form{
+  color:#28313F;
+  text-align:center;
+  margin-left: 445px;
+  margin-right: 426px;
+}
+
+#info{
+  color:#28313F;
+  text-align:center;
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+#result{
+  color:#28313F;
+  text-align:center;
 }
 

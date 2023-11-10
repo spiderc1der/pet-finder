@@ -1,23 +1,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"></script>
 <script src="database.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "style.css"/>
+
 
 <body>
-    <h1 style="color:#800000;text-align:center;">Chicken Smoothie
-        Pet Finder</h1>
+    <h1 id = "title">
+        Chicken Smoothie Pet Finder
+    </h1>
         
-        <p style="color:#28313F;text-align:center;">this is an unofficial tool for the virtual pet game, Chicken Smoothie, designed to help users identify the pets adopted from the Dec 18th boxes!
-            simply copy and paste the image address of your pet 
-            (without dress-up items!) into the box below and click/press enter.
-        </p>
+    <p id = "info">
+        this is an unofficial tool for the virtual pet game, Chicken Smoothie, 
+        designed to help users identify the pets adopted from the Dec 18th boxes!
+        simply copy and paste the image address of your pet 
+        (without dress-up items!) into the box below and click/press enter.
+    </p>
         
-    
-<div class="form-container">
-    <form name:="addressForm" onsubmit="handleRequest(); return false">
-        enter pet image address: <input type="text" name="petForm" id = "petLink"> 
-        <input type="submit" value="submit">
+    <form name:="addressForm" onsubmit="handleRequest(); return false" style="
+        margin-left: 445px;
+        margin-right: 426px;">
+        enter pet image address: <input type="text" style= "width: 580;" name="petForm" id="petLink">
+        <input type="submit" value="enter">
     </form>
-</div>
-  
-<p style="color:#28313F;text-align:center;" id="result"></p>
+
+<p id="result"></p>
 
 </body>
