@@ -204,8 +204,8 @@ async function search(data, imgURL, pID) {
               };
 
               axios(config3).then(function (response3) {
-                
-                if (response3.data.document== []) {
+
+                if (response3.data.documents.length == 0) {
 
                   // if none found, display error message
 
@@ -214,8 +214,7 @@ async function search(data, imgURL, pID) {
 
                 }
                 else {
-                  // function
-
+                  
                   outcomes(response3)
 
                 }
