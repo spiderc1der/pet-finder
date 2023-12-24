@@ -1,29 +1,130 @@
+* {
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+
 body {
-  background-color: #94c17a;
-  font-family: Verdana, Helvetica, Arial, sans-serif;
-}
+  font-family:  Verdana, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  background-color: #6e3b27;
+  margin-top: 10px;
+  margin-left: 200px;
+  margin-right: 200px;
   
-h1{
-  color:#800000;
-  text-align:center;
 }
 
-form{
-  color:#28313F;
-  text-align:center;
-  margin-left: 445px;
-  margin-right: 426px;
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: #fffaf0;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 350px;
+
 }
 
-#info{
-  color:#28313F;
-  text-align:center;
-  margin-left: 400px;
-  margin-right: 400px;
+.results {
+  text-align: center;
+  background-color: #fff5e0;
+  margin-left: 20px;
+  margin-right: 40px;
+  padding-top: 30px;
+  padding-bottom: 65px;
 }
 
-#result{
-  color:#28313F;
-  text-align:center;
+
+.header {
+  text-align: center;
+  color: white;
 }
+
+.header h1 {
+  font-size: 30px;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #275c26;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 5px 20px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #cfb80c;
+  color: black;
+}
+
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #fff5e0;
+  padding: 20px;
+}
+
+.results a:link{
+  color: green;
+}
+
+.results a:visited{
+  color: green;
+}
+
+.results a:hover{
+  color: blue;
+}
+
+.results a:active{
+  color: green;
+}
+
+a:link { 
+  text-decoration: none;
+  color: white;
+} 
+
+a:visited { 
+  text-decoration: none; 
+  color: white;
+} 
+a:hover { 
+  text-decoration: none;
+  color: white;
+} 
+a:active { 
+  text-decoration: none;
+  color: white;
+}
+
+.footer {
+  text-align: center;
+}
+
+
 

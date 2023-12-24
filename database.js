@@ -1,17 +1,37 @@
-
 async function handleRequest() {
 
   // check validity of link entered  
   var input = document.getElementById("petLink").value;
-  if (input.includes("https://static.chickensmoothie.com/archive/image.php?k=")) {
+  if (input.includes("https://static.chickensmoothie.com/")) {
     
     //document.getElementById("result").innerHTML = "Valid link!";
 
     // extract ID from link
-    let temp1 = input.replace("https://static.chickensmoothie.com/archive/image.php?k=", "");
-    let temp2 = temp1.replace("&bg", " ");
-    let temp3 = temp2.split(" ");
-    let petID = temp3[0];
+
+    let temp1 = "";
+    let temp2 = "";
+    let temp3 = "";
+    let petID = "";
+
+
+    if(input.includes("archive")){
+      temp1 = input.replace("https://static.chickensmoothie.com/archive/image.php?k=", "");
+      temp2 = temp1.replace("&bg", " ");
+      temp3 = temp2.split(" ");
+      petID = temp3[0];
+
+    }
+    else if (input.includes("pic.php")){
+      temp1 = input.replace("https://static.chickensmoothie.com/pic.php?k=", "");
+      temp2 = temp1.replace("&bg", " ");
+      temp3 = temp2.split(" ");
+      petID = temp3[0];
+    }
+    else{
+      document.getElementById("result").innerHTML = "Sorry, this is an invalid image address. Please try again.";
+
+    }
+
 
 
     let data = JSON.stringify({
@@ -36,6 +56,10 @@ async function handleRequest() {
 }
 
 async function display_result(imgURL, archive_l, name, month, year, species, litter, pps, artist_l, artist){
+
+  temp = imgURL.split("&bg=");
+
+  imgURL = temp[0] + "&bg=fff5e0"; 
 
   document.getElementById("result").innerHTML =
   "<img src = " + imgURL + "> <br />" +
@@ -81,7 +105,7 @@ async function outcomes(response) {
     let artist = JSON.stringify(results[0].artist_name).replace(/^"(.*)"$/, '$1');
     let artist_l = JSON.stringify(results[0].artist_link);
 
-    let imgURL = "https://static.chickensmoothie.com/archive/image.php?k=" + IDS[0] + "&bg=99c57c";
+    let imgURL = "https://static.chickensmoothie.com/archive/image.php?k=" + IDS[0] + "&bg=fff5e0";
 
     // display 
 
@@ -95,11 +119,11 @@ async function outcomes(response) {
 
     IDS.forEach(element => {
       // construct addresses and add to array 
-      addresses.push("https://static.chickensmoothie.com/archive/image.php?k=" + element + "&bg=99c57c");
+      addresses.push("https://static.chickensmoothie.com/archive/image.php?k=" + element + "&bg=fff5e0");
     });
     
     // construct info blurb 
-    let output = "<b>Possible outcomes:</b> <br />";
+    let output = "<b>Possible outcomes:</b> <br /><br />";
     addresses.forEach(element => { 
       output += "<img src = " + element + ">";
     });
@@ -121,6 +145,25 @@ async function outcomes(response) {
 
 async function search(data, imgURL, pID) {
   try {
+
+    // before querying, check if the given pet ID is reused often for many 
+    // different pets (ex. the default green butterfly wolf chrysalis img)
+
+    if(pID === "3B46301A6C8B850D87A730DA365B0960"){
+
+      output = "<img src =" + imgURL + "> <br /><br /> This chrysalis is the default 'baby' stage for most butterfly wolves-";
+      output += " there are too many <br /> potential outcomes  to display, please come back once the pet is fully grown!"
+
+      document.getElementById("result").innerHTML = output;
+
+      console.log(pID);
+
+      return;
+
+    }
+
+
+
 
     // get authorization token 
 
