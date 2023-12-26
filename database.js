@@ -51,7 +51,7 @@ async function handleRequest() {
 
 }
 
-async function display_result(imgURL, archive_l, name, month, year, species, litter, pps, artist_l, artist){
+async function display_result(imgURL, archive_l, name, month, year, species, litter, pps, artist_l, artist, notes){
 
   temp = imgURL.split("&bg=");
 
@@ -64,7 +64,8 @@ async function display_result(imgURL, archive_l, name, month, year, species, lit
   "<br /> <b>Release date: </b>" + month + " " + year +
   "<br /> <b>Species: </b>" + species + "<br /> <b>Litter name: </b>" + litter +
   "<br /> <b>PPS: </b>" + pps + 
-  "<br /> <b>Artist: </b> <a href = " + artist_l + "> " + artist + " </a>";
+  "<br /> <b>Artist: </b> <a href = " + artist_l + "> " + artist + " </a>" + 
+  "<br /> <b>Notes: </b>" + notes; 
 
 }
 
@@ -115,12 +116,13 @@ async function outcomes(response) {
     species = species.toLowerCase().charAt(0).toUpperCase() + species.slice(1).toLowerCase();
     let artist = JSON.stringify(results[0].artist_name).replace(/^"(.*)"$/, '$1');
     let artist_l = JSON.stringify(results[0].artist_link);
+    let notes = JSON.stringify(results[0].notes);
 
     let imgURL = "https://static.chickensmoothie.com/archive/image.php?k=" + IDS[0] + "&bg=fff5e0";
 
     // display 
 
-    display_result(imgURL, archive_l, name, month, year, species, litter, pps, artist_l, artist)
+    display_result(imgURL, archive_l, name, month, year, species, litter, pps, artist_l, artist, notes)
 
   }
   else {
@@ -356,10 +358,11 @@ async function search(data, imgURL, pID) {
           var artist_l = JSON.stringify(response.data.document.artist_link);
           var litter = JSON.stringify(response.data.document.litter_name).replace(/^"(.*)"$/, '$1');
           var archive_l = JSON.stringify(response.data.document.archive_link); 
+          var notes = JSON.stringify(response.data.document.notes).replace(/^"(.*)"$/, '$1');
           
           // display 
 
-          display_result(imgURL, archive_l, pet, month, year, species, litter, pps, artist_l, artist)
+          display_result(imgURL, archive_l, pet, month, year, species, litter, pps, artist_l, artist, notes)
           
         }
         
