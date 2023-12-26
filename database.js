@@ -4,8 +4,6 @@ async function handleRequest() {
   var input = document.getElementById("petLink").value;
   if (input.includes("https://static.chickensmoothie.com/")) {
     
-    //document.getElementById("result").innerHTML = "Valid link!";
-
     // extract ID from link
 
     let temp1 = "";
@@ -31,8 +29,6 @@ async function handleRequest() {
       document.getElementById("result").innerHTML = "Sorry, this is an invalid image address. Please try again.";
 
     }
-
-
 
     let data = JSON.stringify({
       "dataSource": "CSpets",
@@ -72,6 +68,15 @@ async function display_result(imgURL, archive_l, name, month, year, species, lit
 
 }
 
+function checkNestedArray(array, item){
+  var stringified_item = JSON.stringify(item);
+
+  var contains = array.some(function(ele){
+    return JSON.stringify(ele) === stringified_item;
+  });
+  return contains;
+}
+
 
 async function outcomes(response) {
 
@@ -79,6 +84,9 @@ async function outcomes(response) {
 
   let IDS = [];
   let pet_names = [];
+  let release_dates = [];
+  let links = [];
+  let litter_names = [];
 
   // get values consistent across the litter from the first 
   // pet in the array 
@@ -91,6 +99,9 @@ async function outcomes(response) {
     // add each pet's information to its respective array 
     IDS.push(element._id);
     pet_names.push(element.pet_name);
+    release_dates.push([element.month, element.year]);
+    links.push(element.archive_link);
+    litter_names.push(element.litter_name);
     
   });
 
@@ -124,24 +135,72 @@ async function outcomes(response) {
     
     // construct info blurb 
     let output = "<b>Possible outcomes:</b> <br /><br />";
+
+    let added_dates = [];
+    let added_links = [];
+    let added_litters = [];
+
     addresses.forEach(element => { 
       output += "<img src = " + element + ">";
     });
-    output += "<br /> <a href = " + archive_l + ">" + "Archive link" +
-      "</a> <br /> <b>Litter name</b>: " + litter + "<br /> <b>Pet names:</b> ";
+
+    for(let i = 0; i < addresses.length; i++){
+      current_date = [release_dates[i][0], release_dates[i][1]];
+      current_link = links[i];
+      current_litter = litter_names[i];
+
+      if(!checkNestedArray(added_dates, current_date)){
+        added_dates.push([release_dates[i][0], release_dates[i][1]]);
+      }
+      if(!checkNestedArray(added_links, current_link)){
+        added_links.push(current_link);
+      }
+      if(!checkNestedArray(added_litters, current_litter)){
+        added_litters.push(current_litter);
+      }
+    }
+
+    output += "<br />";
+
+    if(added_links.length > 1){
+      for(let i = 0; i < added_links.length; i++){
+        output += "<a href = " + added_links[i] + ">" + "Archive link " + (i+1)  + "</a>  ";
+      }
+    }
+    else{
+      output += "<a href = " + added_links[0] + ">" + "Archive link "  + "</a>  ";
+    }
+
+    output += "<br /> <b>Litter name(s)</b>: ";
+
+    for(let i = 0; i < added_litters.length; i++){
+
+      output += added_litters[i] + ", "; 
+    }
+
+    output = output.substring(0, output.length - 2);
+  
+
+    output +=  "<br /> <b>Pet names:</b> ";
     for (let i = 0; i < pet_names.length; i++){
       output += pet_names[i] + ", ";
     }
     // remove last comma
     output = output.substring(0, output.length - 2);
-    output += "<br /> <b>Release date:</b> " + month + " " + year;
+    output += "<br /> <b>Release date(s):</b> ";
+
+    // adds the dates of all pets w/ no repeats
+    added_dates.forEach(element => {
+      output += element[0] + " " + element[1] + ", ";
+    });
+
+    output = output.substring(0, output.length - 2);
 
     document.getElementById("result").innerHTML = output;
 
   }
 
 }
-
 
 async function search(data, imgURL, pID) {
   try {
@@ -150,6 +209,9 @@ async function search(data, imgURL, pID) {
     // different pets (ex. the default green butterfly wolf chrysalis img)
 
     if(pID === "3B46301A6C8B850D87A730DA365B0960"){
+
+      temp = imgURL.split("&bg=");
+      imgURL = temp[0] + "&bg=fff5e0"; 
 
       output = "<img src =" + imgURL + "> <br /><br /> This chrysalis is the default 'baby' stage for most butterfly wolves-";
       output += " there are too many <br /> potential outcomes  to display, please come back once the pet is fully grown!"
@@ -161,9 +223,6 @@ async function search(data, imgURL, pID) {
       return;
 
     }
-
-
-
 
     // get authorization token 
 

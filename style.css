@@ -26,6 +26,10 @@ body {
   
 }
 
+hr{
+  border-color: #6e3b27;
+}
+
 .main {   
   -ms-flex: 70%; /* IE10 */
   flex: 70%;
@@ -103,6 +107,23 @@ body {
 .results a:active{
   color: green;
 }
+
+.side a:link{
+  color: green;
+}
+
+.side a:visited{
+  color: green;
+}
+
+.side a:hover{
+  color: blue;
+}
+
+.side a:active{
+  color: green;
+}
+
 
 a:link { 
   text-decoration: none;
