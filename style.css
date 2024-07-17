@@ -3,7 +3,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .row {   
+  .row {
     flex-direction: column;
   }
 }
@@ -15,29 +15,40 @@
   }
 }
 
-
 body {
-  font-family:  Verdana, Helvetica, Arial, sans-serif;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
   font-size: 14px;
   background-color: #6e3b27;
   margin-top: 10px;
   margin-left: 200px;
   margin-right: 200px;
-  
+  min-width: 520px;
 }
 
-hr{
+hr {
   border-color: #6e3b27;
 }
 
-.main {   
+.main {
   -ms-flex: 70%; /* IE10 */
   flex: 70%;
   background-color: #fffaf0;
   padding-top: 20px;
   padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 350px;
+}
 
+.row {
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+.side {
+  flex: 30%;
+  background-color: #fff5e0;
+  padding: 20px;
 }
 
 .results {
@@ -48,7 +59,6 @@ hr{
   padding-top: 30px;
   padding-bottom: 65px;
 }
-
 
 .header {
   text-align: center;
@@ -78,67 +88,52 @@ hr{
   color: black;
 }
 
-.row {  
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-}
-
-.side {
-  -ms-flex: 30%; /* IE10 */
-  flex: 30%;
-  background-color: #fff5e0;
-  padding: 20px;
-}
-
-.results a:link{
+.results a:link {
   color: green;
 }
 
-.results a:visited{
+.results a:visited {
   color: green;
 }
 
-.results a:hover{
+.results a:hover {
   color: blue;
 }
 
-.results a:active{
+.results a:active {
   color: green;
 }
 
-.side a:link{
+.side a:link {
   color: green;
 }
 
-.side a:visited{
+.side a:visited {
   color: green;
 }
 
-.side a:hover{
+.side a:hover {
   color: blue;
 }
 
-.side a:active{
+.side a:active {
   color: green;
 }
 
-
-a:link { 
+a:link {
   text-decoration: none;
   color: white;
-} 
+}
 
-a:visited { 
-  text-decoration: none; 
-  color: white;
-} 
-a:hover { 
+a:visited {
   text-decoration: none;
   color: white;
-} 
-a:active { 
+}
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+a:active {
   text-decoration: none;
   color: white;
 }
@@ -146,6 +141,3 @@ a:active {
 .footer {
   text-align: center;
 }
-
-
-
