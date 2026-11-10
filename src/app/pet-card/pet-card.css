@@ -1,0 +1,20 @@
+
+:host {
+  display: block;
+  width: 260px;
+  height: 450px;
+}
+
+.pet-card {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border: 5px solid #91bc75;
+  border-radius: 8px;
+}

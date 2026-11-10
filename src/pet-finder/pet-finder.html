@@ -1,0 +1,41 @@
+<h3>Pet Finder</h3>
+
+<p>Copy and paste the image address of your pet (without dress-up items!) into the box below.</p>
+
+<form [formGroup]="petLinkControl" (ngSubmit)="lookupPet()">
+  <input type="text" formControlName="link" />
+  <button type="submit" [disabled]="loading()">
+    {{ loading() ? 'Searching...' : 'Find Pet' }}
+  </button>
+  @if (petLinkControl.invalid && petLinkControl.value.link?.trim() && (petLinkControl.touched || petLinkControl.dirty)){
+    <p class="error">Link invalid</p>
+  }
+</form>
+
+
+
+@if (errorMessage()) {
+  <p>{{ errorMessage() }}</p>
+}
+
+<div class="results">
+  @if (result(); as currentResult) {
+    @if (currentResult.type === 'pet') {
+      <!-- singular pet -->
+      <h3>Pet found!</h3>
+      <app-pet-card [pet]="currentResult.data"/>
+    } @else if (currentResult.data.length === 1) {
+      <!-- array of pets -->
+      <h3>Pet found!</h3>
+      <app-pet-card [pet]="currentResult.data[0]" />
+    } @else {
+      <h3>Possible Outcomes</h3>
+      <div class="outcomes-grid">
+        @for (pet of currentResult.data; track pet._id){
+        <!-- display each pet -->
+         <app-pet-card [pet]="pet" />
+       }
+      </div>
+    }
+  }
+</div>

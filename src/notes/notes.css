@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  background: var(--paper-dark);
+  padding: 1.5rem;
+}
+
+hr {
+  border-color: var(--background);
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: blue;
+}

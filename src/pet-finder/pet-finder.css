@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  padding: 1.5rem;
+}
+
+.results {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--primary);
+  text-align: center;
+  border-radius: 6px;
+}
+
+.results a {
+  color: green;
+}
+
+.results a:hover {
+  color: blue;
+}
+
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+input[type="text"] {
+  width: min(480px, 100%);
+}
+
+.error{
+  color: red
+}
+

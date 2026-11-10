@@ -1,0 +1,46 @@
+<section class="pet-card">
+  <img
+    [src]="getImageUrl()!"
+    [alt]="pet().pet_name || 'Found pet'"
+    class="pet-image"
+  />
+
+  <h4>{{ pet().pet_name }}</h4>
+  <p>
+    <a 
+    [href]="pet().archive_link"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    {{ pet().month }} {{ pet().year }}
+    </a>
+  </p>
+
+
+      @if (pet().artist_name) {
+      <p>
+        <strong>Artist:</strong>
+        @if (pet().artist_link) {
+          <a
+            [href]="pet().artist_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ pet().artist_name }}
+          </a>
+        } @else {
+          {{ pet().artist_name }}
+        }
+      </p>
+    }
+
+    <p><strong>Species:</strong> {{ pet().species }}</p>
+
+    @if (pet().litter_name) {
+      <p><strong>Litter:</strong> {{ pet().litter_name }}</p>
+    }
+
+    @if (pet().notes !== 'N/A') {
+      <p><strong>Notes:</strong> {{ pet().notes }}</p>
+    }
+</section>
