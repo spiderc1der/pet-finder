@@ -1,0 +1,26 @@
+header {
+  text-align: center;
+  color: white;
+  
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  max-width: 1200px;
+  margin: auto;
+  min-height: calc(100vh - 80px);
+}
+
+.finder-section {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+}
+
+@media (max-width: 800px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
